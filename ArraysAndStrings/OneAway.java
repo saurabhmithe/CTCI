@@ -5,7 +5,7 @@ public class OneAway {
 
 	public static void main(String[] args) {
 		String s1 = "pale";
-		String s2 = "bake";
+		String s2 = "ela";
 
 		System.out.println(oneAway(s1, s2));
 	}
