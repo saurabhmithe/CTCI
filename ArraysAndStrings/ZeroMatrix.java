@@ -1,4 +1,8 @@
 
+/*
+ * Write an algorithm such that if an element in an MxN matrix is 0, 
+ * its entire row and column are set to O.
+ */
 public class ZeroMatrix {
 	public static void main(String[] args) {
 		int m = 4;
@@ -19,7 +23,7 @@ public class ZeroMatrix {
 	private static int[][] nullifyZeros(int[][] matrix, int m, int n) {
 
 		printMatrix(matrix);
-		
+
 		boolean[] toNullifyRow = new boolean[m];
 		boolean[] toNullifyColumn = new boolean[n];
 
@@ -37,7 +41,7 @@ public class ZeroMatrix {
 				nullifyRow(i, matrix);
 			}
 		}
-		
+
 		printMatrix(matrix);
 
 		for (int i = 0; i < toNullifyColumn.length; i++) {

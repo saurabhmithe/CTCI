@@ -1,4 +1,8 @@
 
+/*
+ * Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes,
+ * write a method to rotate the image by 90 degrees. (an you do this in place?
+ */
 public class RotateMatrix {
 	public static void main(String[] args) {
 
@@ -28,11 +32,11 @@ public class RotateMatrix {
 				int offset = i - first;
 
 				int temp = a[first][i];
-				a[first][i] = a[last-offset][first];
-				a[last-offset][first] = a[last][last-offset];
-				a[last][last-offset] = a[i][last];
+				a[first][i] = a[last - offset][first];
+				a[last - offset][first] = a[last][last - offset];
+				a[last][last - offset] = a[i][last];
 				a[i][last] = temp;
-				
+
 			}
 
 		}

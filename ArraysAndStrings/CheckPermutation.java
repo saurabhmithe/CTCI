@@ -1,6 +1,9 @@
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+ * Given two strings, write a method to decide if one is a permutation of the other.
+ */
 public class CheckPermutation {
 	public static void main(String[] args) {
 		String s1 = "tweety";
@@ -16,7 +19,7 @@ public class CheckPermutation {
 
 		Map<Character, Integer> firstMap = new HashMap<Character, Integer>();
 		Map<Character, Integer> secondMap = new HashMap<Character, Integer>();
-		
+
 		for (int i = 0; i < s1.length(); i++) {
 			if (!firstMap.containsKey(s1.charAt(i))) {
 				firstMap.put(s1.charAt(i), 1);
@@ -24,7 +27,7 @@ public class CheckPermutation {
 				firstMap.put(s1.charAt(i), firstMap.get(s1.charAt(i)) + 1);
 			}
 		}
-		
+
 		for (int i = 0; i < s2.length(); i++) {
 			if (!secondMap.containsKey(s2.charAt(i))) {
 				secondMap.put(s2.charAt(i), 1);
@@ -32,8 +35,8 @@ public class CheckPermutation {
 				secondMap.put(s2.charAt(i), secondMap.get(s2.charAt(i)) + 1);
 			}
 		}
-		
-		if(firstMap.equals(secondMap)) {
+
+		if (firstMap.equals(secondMap)) {
 			isPermutation = true;
 		}
 
