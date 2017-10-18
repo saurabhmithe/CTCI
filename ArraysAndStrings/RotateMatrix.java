@@ -26,12 +26,13 @@ public class RotateMatrix {
 
 			for (int i = layer; i < n - layer - 1; i++) {
 				int offset = i - first;
-				
+
 				int temp = a[first][i];
-				a[first][i] = a[last - offset][first];
+				a[first][i] = a[last-offset][first];
 				a[last-offset][first] = a[last][last-offset];
 				a[last][last-offset] = a[i][last];
 				a[i][last] = temp;
+				
 			}
 
 		}

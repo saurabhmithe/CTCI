@@ -12,6 +12,7 @@ public class ZeroMatrix {
 		}
 		matrix[0][3] = 0;
 		matrix[1][2] = 0;
+		matrix[2][3] = 0;
 		printMatrix(nullifyZeros(matrix, m, n));
 	}
 
