@@ -3,5 +3,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="ArraysAndStrings"/>
 	<classpathentry kind="src" path="CustomImplementations"/>
+	<classpathentry kind="src" path="LinkedLists"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
