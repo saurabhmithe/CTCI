@@ -1,4 +1,5 @@
-package ctci.linkedlists.core;
+package core;
+
 
 public class LinkedList {
 

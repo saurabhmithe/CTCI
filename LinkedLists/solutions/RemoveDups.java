@@ -1,9 +1,8 @@
-package ctci.linkedlists.problems;
-
+package solutions;
 import java.util.HashSet;
 
-import ctci.linkedlists.core.LinkedList;
-import ctci.linkedlists.core.LinkedList.Node;
+import core.LinkedList;
+import core.LinkedList.Node;
 
 /**
  * Write code to remove duplicates from an unsorted linked list.
