@@ -10,10 +10,11 @@ import java.util.Set;
 public class IsUnique {
 
     public static void main(String[] args) {
-        String test = "abccde";
+        String test = "abcde";
         System.out.println(isUnique(test));
         System.out.println(isUniqueUsingHashMap(test));
         System.out.println(isUniqueUsingHashSet(test));
+        System.out.println(isUniqueBooleanArray(test));
     }
 
     /**
@@ -82,6 +83,8 @@ public class IsUnique {
      * In the end, we compare the size of the Set with the length of input string.
      * If they are not equal, it implies that one or more characters were repeated.
      *
+     * Time complexity is O(N) since we are traversing the array just once.
+     *
      * @param string
      * @return
      */
@@ -96,6 +99,46 @@ public class IsUnique {
 
         if (uniqueCharacters.size() != string.length()) {
             isUnique = false;
+        }
+
+        return isUnique;
+    }
+
+    /**
+     * This approach is the best approach given the premises and nature of the input.
+     * Since there can only be a string of maximum length 256 provided all the characters are unique,
+     * we can disregard any string with length greater than that.
+     *
+     * If we look at the ASCII values of the characters that can form the string, they will always be in the range
+     * 0 - 255. So we can use a boolean array to indicate whether the character has already appeared in the string.
+     * Whenever we read a character from the string, we check the index corresponding to its boolean value.
+     * If it is true, it implies that the character has already appeared in the string before and we exit with false.
+     * Else, if the value is false, we set the value to true and move on to the next character.
+     *
+     * Time complexity is O(N) since we are reading each character just once. However, since the array size cannot be
+     * larger than 256, one can argue that the time complexity will be constant since a maximum of 256 character
+     * would be need to be read. So the time complexity would be O(1).
+     *
+     * @param string
+     * @return
+     */
+    private static boolean isUniqueBooleanArray(String string) {
+
+        if(string.length() > 256) {
+            return false;
+        }
+
+        boolean isUnique = true;
+
+        boolean[] charArray = new boolean[256];
+
+        for (char c : string.toCharArray()) {
+            if (!charArray[c]) {
+                charArray[c] = true;
+            } else {
+                isUnique = false;
+                break;
+            }
         }
 
         return isUnique;
