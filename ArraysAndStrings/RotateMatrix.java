@@ -1,7 +1,7 @@
 
 /*
  * Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes,
- * write a method to rotate the image by 90 degrees. (an you do this in place?
+ * write a method to rotate the image by 90 degrees. (can you do this in place?)
  */
 public class RotateMatrix {
 	public static void main(String[] args) {
@@ -12,15 +12,18 @@ public class RotateMatrix {
 		printMatrix(rotate(matrix, n), n);
 	}
 
-	private static void printMatrix(int[][] matrix, int n) {
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				System.out.print(matrix[i][j] + "   ");
-			}
-			System.out.println("\n");
-		}
-	}
-
+	/**
+	 * This approach rotates the given two dimensional matrix layer by layer.
+	 * We can think of the matrix as nested squares which are rotated one by one starting from the outermost square.
+	 *
+	 * When rotating each square, we shift the elements to the appropriate place starting from left to right.
+	 *
+	 * Since this solution needs to access every element at least once, the time complexity for this one would be O(N^2)
+	 *
+	 * @param a
+	 * @param n
+	 * @return
+	 */
 	private static int[][] rotate(int[][] a, int n) {
 
 		for (int layer = 0; layer < n / 2; layer++) {
@@ -41,6 +44,14 @@ public class RotateMatrix {
 
 		}
 		return a;
+	}
 
+	private static void printMatrix(int[][] matrix, int n) {
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				System.out.print(matrix[i][j] + "   ");
+			}
+			System.out.println("\n");
+		}
 	}
 }
