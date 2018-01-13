@@ -20,6 +20,23 @@ public class ZeroMatrix {
 		printMatrix(nullifyZeros(matrix, m, n));
 	}
 
+	/**
+	 * In this approach, we use two boolean arrays to maintain the row number to be nullified and the
+	 * column number to be nullified. We access each element in the given matrix and if the element is 0,
+	 * we add the set the value corresponding to the row number in the row boolean array to true.
+	 * Similarly, we set the value corresponding to the column number in the column boolean array to true.
+	 *
+	 * Now that we have two arrays which indicate the row number and column number to be nullified respectively,
+	 * we traverse through the arrays and set the row and column to 0 in the original matrix according
+	 * to the data in the arrays.
+	 *
+	 * Since we need to access all the elements in the matrix, the time complexity for this solution would be O(N^2).
+	 *
+	 * @param matrix
+	 * @param m
+	 * @param n
+	 * @return
+	 */
 	private static int[][] nullifyZeros(int[][] matrix, int m, int n) {
 
 		printMatrix(matrix);
@@ -46,7 +63,7 @@ public class ZeroMatrix {
 
 		for (int i = 0; i < toNullifyColumn.length; i++) {
 			if (toNullifyColumn[i]) {
-				nullifycolumn(i, matrix);
+				nullifyColumn(i, matrix);
 			}
 		}
 
@@ -59,7 +76,7 @@ public class ZeroMatrix {
 		}
 	}
 
-	private static void nullifycolumn(int i, int[][] matrix) {
+	private static void nullifyColumn(int i, int[][] matrix) {
 		for (int j = 0; j < matrix.length; j++) {
 			matrix[j][i] = 0;
 		}
@@ -71,13 +88,6 @@ public class ZeroMatrix {
 				System.out.print("  " + matrix[i][j]);
 			}
 			System.out.println();
-		}
-		System.out.println();
-	}
-
-	private static void printArray(int[] a) {
-		for (int i = 0; i < a.length; i++) {
-			System.out.println(a[i]);
 		}
 		System.out.println();
 	}
