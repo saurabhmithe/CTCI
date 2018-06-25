@@ -16,9 +16,9 @@ public class CheckPermutation {
     public static void main(String[] args) {
         String s1 = "tweety";
         String s2 = "weetty";
-        System.out.println(checkPermutationUsingCounting(s1, s2));
-        System.out.println(checkPermutationUsingSorting(s1, s2));
-        System.out.println(checkPermutationCharacterCounting(s1, s2));
+        System.out.println(checkPermutationCountingHashMap(s1, s2));
+        System.out.println(checkPermutationSorting(s1, s2));
+        System.out.println(checkPermutationCountingArray(s1, s2));
     }
 
     /**
@@ -31,7 +31,7 @@ public class CheckPermutation {
      * Time Complexity - O(nlogn)
      * Space Complexity - O(1)
      */
-    private static boolean checkPermutationUsingSorting(String s1, String s2) {
+    private static boolean checkPermutationSorting(String s1, String s2) {
         // Strings are of unequal length. Cannot be permutations.
         if (s1.length() != s2.length()) {
             return false;
@@ -65,7 +65,7 @@ public class CheckPermutation {
      * Time Complexity - O(n)
      * Space Complexity - O(n)
      */
-    private static boolean checkPermutationUsingCounting(String s1, String s2) {
+    private static boolean checkPermutationCountingHashMap(String s1, String s2) {
         // Strings are of unequal length. Cannot be permutations.
         if (s1.length() != s2.length()) return false;
 
@@ -110,7 +110,7 @@ public class CheckPermutation {
      * Time Complexity - O(n)
      * Space Complexity - O(1)
      */
-    private static boolean checkPermutationUsingCountingInArray(String s1, String s2) {
+    private static boolean checkPermutationCountingArray(String s1, String s2) {
         // Strings are of unequal length. Cannot be permutations.
         if (s1.length() != s2.length()) {
             return false;
