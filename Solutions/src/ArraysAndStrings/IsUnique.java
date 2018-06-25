@@ -6,14 +6,15 @@ public class IsUnique {
 
     /*
 
+    1.1 Is Unique:
     Implement an algorithm to determine if a string has all unique characters.
     What if you cannot use additional data structures?
 
     */
 
     public static void main(String[] args) {
-        String test = "saurabh";
-        System.out.println(isUnique(test));
+        String test = "testing";
+        System.out.println(isUniqueBruteForce(test));
         System.out.println(isUniqueSorting(test));
         System.out.println(isUniqueUsingHashMap(test));
         System.out.println(isUniqueUsingHashSet(test));
@@ -29,7 +30,7 @@ public class IsUnique {
      * Time Complexity - O(n^2)
      * Space Complexity - O(1)
      */
-    private static boolean isUnique(String string) {
+    private static boolean isUniqueBruteForce(String string) {
         for (int i = 0; i < string.length() - 1; i++) {
             for (int j = i + 1; j < string.length(); j++) {
                 if (string.charAt(i) == string.charAt(j)) {
@@ -40,10 +41,20 @@ public class IsUnique {
         return true;
     }
 
+    /**
+     * This approach makes use of sorting.
+     * After sorting, we traverse through the string one character at a time.
+     * If two adjacent characters are same, the characters are not unique and we return false.
+     * If no such characters are found, we return true.
+     * <p>
+     * Time Complexity - O(nlogn)
+     * Space Complexity - O(1)
+     */
     private static boolean isUniqueSorting(String s) {
         char[] c = s.toCharArray();
         Arrays.sort(c);
         for (int i = 0; i < c.length - 1; i++) {
+            // Check if current character is same as the next character.
             if (c[i] == c[i + 1]) return false;
         }
         return true;
@@ -63,10 +74,10 @@ public class IsUnique {
         Map<Character, Integer> characterCountMap = new HashMap<Character, Integer>();
         for (char c : string.toCharArray()) {
             if (characterCountMap.containsKey(c)) {
+                // We have already seen this character. It cannot be unique.
                 return false;
-            } else {
-                characterCountMap.put(c, 1);
             }
+            characterCountMap.put(c, 1);
         }
         return true;
     }
@@ -81,13 +92,15 @@ public class IsUnique {
      * Space Complexity - O(n)
      */
     private static boolean isUniqueUsingHashSet(String string) {
-        boolean isUnique = true;
         Set<Character> uniqueCharacters = new HashSet<Character>();
         for (char c : string.toCharArray()) {
-            if (uniqueCharacters.contains(c)) return false;
+            if (uniqueCharacters.contains(c)) {
+                // We have already seen this character. It cannot be unique.
+                return false;
+            }
             uniqueCharacters.add(c);
         }
-        return isUnique;
+        return true;
     }
 
     /**
@@ -101,12 +114,8 @@ public class IsUnique {
      * If it is true, it implies that the character has already appeared in the string before and we exit with false.
      * Else, if the value is false, we set the value to true and move on to the next character.
      * <p>
-     * Time complexity is O(N) since we are reading each character just once. However, since the array size cannot be
-     * larger than 256, one can argue that the time complexity will be constant since a maximum of 256 character
-     * would be need to be read. So the time complexity would be O(1).
-     *
-     * @param string
-     * @return
+     * Time Complexity - O(n)
+     * Space Complexity - O(1)
      */
     private static boolean isUniqueBooleanArray(String string) {
         if (string.length() > 256) {
@@ -125,7 +134,14 @@ public class IsUnique {
         return isUnique;
     }
 
-
+    /**
+     * This is a more clever appraoch as compared to the boolean array one.
+     * Instead of using an array, we use the bits of an integer to do the counting.
+     * If the corresponding bit is already set, we return false, else we set the bit.
+     * <p>
+     * Time Complexity - O(n)
+     * Space Complexity - O(1)
+     */
     private static boolean isUniqueBitVector(String string) {
         int checker = 0;
         for (char c : string.toCharArray()) {
@@ -135,4 +151,5 @@ public class IsUnique {
         }
         return true;
     }
+    
 }
