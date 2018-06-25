@@ -1,18 +1,18 @@
-import java.util.HashMap;
-import java.util.Map;
+package ArraysAndStrings;
 
-/*
- * There are three types of edits that can be performed on strings:
- * insert a character, remove a character, or replace a character.
- * Given two strings, write a function to check if they are one edit
- * (or zero edits) away.
- */
 public class OneAway {
+
+    /*
+
+    1.5 One Away:
+    There are three types of edits that can be performed on strings: insert a character, remove a character,
+    or replace a character. Given two strings, write a function to check if they are one edit (or zero edits) away.
+
+    */
 
     public static void main(String[] args) {
         String s1 = "pale";
         String s2 = "ale";
-
         System.out.println(oneAwayInPlace(s1, s2));
     }
 
@@ -20,13 +20,10 @@ public class OneAway {
      * In this approach, we would check both the scenarios independently.
      * checkReplacement() would check whether two strings with equal lengths have a single out of place character.
      * checkInsert() would check whether two strings with length difference of just one have same character sequence.
-     *
      * For both of these operations, we would check each character sequentially until we find the mismatch.
-     * The time complexity of this approach would be O(N).
-     *
-     * @param s1
-     * @param s2
-     * @return
+     * <p>
+     * Time Complexity - O(n)
+     * Space Complexity - O(1)
      */
     private static boolean oneAwayInPlace(String s1, String s2) {
         if (s1.length() == s2.length()) {
@@ -36,6 +33,7 @@ public class OneAway {
         } else if (s1.length() - s2.length() < 0) {
             return checkInsert(s2, s1);
         }
+        // Length difference is more than 1. Cannot be one away.
         return false;
     }
 
@@ -79,4 +77,5 @@ public class OneAway {
         }
         return true;
     }
+
 }
