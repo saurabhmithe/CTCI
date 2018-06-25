@@ -1,12 +1,18 @@
-/*
- * Implement a method to perform basic string compression using
- * the counts of repeated characters. For example, the string
- * aabcccccaaa would become a2b1c5a3. If the "compressed" string
- * would not become smaller than the original string, your method
- * should return the original string. You can assume the string has
- * only uppercase and lowercase letters (a - z).
- */
+package ArraysAndStrings;
+
 public class StringCompression {
+
+    /*
+
+    Implement a method to perform basic string compression using
+    the counts of repeated characters. For example, the string
+    aabcccccaaa would become a2b1c5a3. If the "compressed" string
+    would not become smaller than the original string, your method
+    should return the original string. You can assume the string has
+    only uppercase and lowercase letters (a - z).
+
+    */
+
     public static void main(String[] args) {
         String toBeCompressed = "aaabbbbbccccccc";
         System.out.println(compressString(toBeCompressed));
@@ -17,38 +23,27 @@ public class StringCompression {
      * If the previous character is the same as the current character, count is incremented and maintained.
      * When a new character is encountered, the previous character along with its count is appended to
      * the compressed string and a new count is maintained for the new character.
-     *
-     * The time complexity for this solution is O(N).
-     *
-     * @param s
-     * @return
+     * <p>
+     * Time Complexity - O(n)
+     * Space Complexity - O(n)
      */
     private static String compressString(String s) {
+        if (s.length() == 0) return "";
         StringBuilder compressedString = new StringBuilder();
-
-        int count = 0;
-        char previous = ' ';
-        for (int i = 0; i < s.length(); i++) {
-            if (previous != ' ') {
-                if (s.charAt(i) == previous) {
-                    // This character is the same as the previous one
-                    count++;
-                } else {
-                    // This is a new character. Appending the count of previous distinct character to compressed string
-                    compressedString.append(previous);
-                    compressedString.append(count);
-                    count = 1;
-                }
-            } else {
-                // This is the first character in the string
-                count++;
+        char c = s.charAt(0);
+        int count = 1;
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i) == c) count += 1;
+            else {
+                compressedString.append(c);
+                compressedString.append(count);
+                c = s.charAt(i);
+                count = 1;
             }
-            previous = s.charAt(i);
-
         }
-        compressedString.append(previous);
+        compressedString.append(c);
         compressedString.append(count);
-
         return compressedString.toString();
     }
+
 }
