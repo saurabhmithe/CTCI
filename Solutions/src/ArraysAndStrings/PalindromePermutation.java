@@ -1,21 +1,23 @@
+package ArraysAndStrings;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-/*
- * Given a string, write a function to check if it is a
- * permutation of a palin- drome. A palindrome is a word
- * or phrase that is the same forwards and backwards.
- * A permutation is a rearrangement of letters.The palindrome
- * does not need to be limited to just dictionary words.
- */
 public class PalindromePermutation {
 
-    public static void main(String[] args) {
-        String input = "Tact Coa";
+    /*
 
+     Given a string, write a function to check if it is a permutation of a palindrome. A palindrome is a word
+     or phrase that is the same forwards and backwards. A permutation is a rearrangement of letters.
+     The palindrome does not need to be limited to just dictionary words.
+
+     */
+
+    public static void main(String[] args) {
+        String input = "Tacat Coa";
         System.out.println(isPalindromePermutation(input));
-        System.out.println(isPalindromePermutationBitVector(input));
+        System.out.println(isPal(input));
     }
 
     /**
@@ -29,10 +31,8 @@ public class PalindromePermutation {
      * of one character rest of the counts being two, we can infer that the string would be a
      * palindrome permutation.
      * <p>
-     * The time complexity of this solution would be O(N).
-     *
-     * @param input
-     * @return
+     * Time Complexity - O(n)
+     * Space Complexity - O(n)
      */
     private static boolean isPalindromePermutation(String input) {
         String workingString = input.toLowerCase();
@@ -73,46 +73,30 @@ public class PalindromePermutation {
      * as we have implemented in the other solution using HashMap but this is more space efficient since we require
      * just 4 byte integer for bit vector instead of the HashMap.
      * <p>
-     * The time complexity for this solution is O(N) as well.
-     *
-     * @param input
-     * @return
+     * Time Complexity - O(n)
+     * Space Complexity - O(1)
      */
-    private static boolean isPalindromePermutationBitVector(String input) {
-        int bitVector = getBitVector(input);
-        return bitVector == 0 || exactlyOneBitIsSet(bitVector);
-    }
-
-    private static int getBitVector(String input) {
-        int bitVector = 0;
-        for (char c : input.toCharArray()) {
-            bitVector = toggleBit(bitVector, c);
+    public static boolean isPal(String s) {
+        s = s.toLowerCase();
+        int checker = 0;
+        // create bit vector for given string with toggling
+        for (char c : s.toCharArray()) {
+            if (c != ' ') {
+                int pos = c - 'a';
+                int mask = 1 << pos;
+                if ((checker & mask) == 0) {
+                    // set 0 to 1
+                    checker |= mask;
+                } else {
+                    // set 1 to 0
+                    checker &= ~mask;
+                }
+            }
         }
-        return bitVector;
-    }
-
-    private static int toggleBit(int bitVector, char c) {
-        int index = c - 'A';
-
-        if (index < 0) {
-            return bitVector;
-        }
-
-        // Creating a new empty bit vector with just the appropriate bit set
-        int mask = 1 << index;
-        if ((bitVector & mask) == 0) {
-            // The bit was not set earlier and we are setting it to 1 here
-            bitVector |= mask;
-        } else {
-            // The bit was set earlier and we are resetting it to 0 here
-            bitVector &= ~mask;
-        }
-
-        return bitVector;
-    }
-
-    private static boolean exactlyOneBitIsSet(int bitVector) {
-        return (bitVector & (bitVector - 1)) == 0;
+        // now we need to check if just a single bit is set
+        // 00010000 -1 -> 00001111
+        int res = checker - 1;
+        return (res & checker) == 0;
     }
 
 }
