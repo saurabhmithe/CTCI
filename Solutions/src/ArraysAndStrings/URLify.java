@@ -1,10 +1,16 @@
-/*
- * Write a method to replace all spaces in a string with '%20:
- * You may assume that the string has sufficient space at the end
- * to hold the additional characters, and that you are given the "true"
- * length of the string.
- */
+package ArraysAndStrings;
+
 public class URLify {
+
+    /*
+
+    Write a method to replace all spaces in a string with '%20:
+    You may assume that the string has sufficient space at the end
+    to hold the additional characters, and that you are given the "true"
+    length of the string.
+
+    */
+
     public static void main(String[] args) {
         String inputString = "Mr John Smith    ";
         Integer trueLength = 13;
@@ -23,18 +29,12 @@ public class URLify {
      * exact order. As we continue doing this, and reach the beginning of the string, we would get the desired
      * substitution.
      * <p>
-     * The time complexity of this approach would be O(N) since we will be walking through the string exactly once.
-     *
-     *
-     * @param inputString
-     * @param trueLength
-     * @return
+     * Time Complexity  - O(n)
+     * Space Complexity - O(1)
      */
     private static char[] urlify(String inputString, Integer trueLength) {
         char[] charArray = inputString.toCharArray();
-
         int len = charArray.length - 1;
-
         for (int i = trueLength - 1; i >= 0; i--) {
             if (charArray[i] != ' ') {
                 charArray[len--] = charArray[i];
@@ -44,7 +44,7 @@ public class URLify {
                 charArray[len--] = '%';
             }
         }
-
         return charArray;
     }
+
 }
