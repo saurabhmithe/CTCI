@@ -2,6 +2,11 @@ package LinkedLists;
 
 public class KthToLast {
 
+    /*
+
+    Implement an algorithm to find the kth to last element of a singly linked list.
+
+     */
 
     /**
      * Time Complexity - O(n)
@@ -29,6 +34,8 @@ public class KthToLast {
     }
 
     public static void main(String[] args) {
+
+        // Create a custom Linked List
         LinkedList list = new LinkedList();
         list.append(1);
         list.append(2);
@@ -39,6 +46,8 @@ public class KthToLast {
         list.append(7);
         list.append(8);
 
+        // Search and print kth to last element
+        // If no such index found, return -1
         KthToLast toLast = new KthToLast();
         int kLast = toLast.kthToLast(list.getHead(), 1);
         System.out.println(kLast);
