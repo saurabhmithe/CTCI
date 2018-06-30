@@ -90,4 +90,5 @@ public class Intersection {
         int intersectionIndex = intersection.intersection(list1.getHead(), list2.getHead());
         System.out.println(intersectionIndex);
     }
+
 }
