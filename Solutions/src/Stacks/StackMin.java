@@ -12,6 +12,10 @@ public class StackMin {
 
     */
 
+    /**
+     * Time Complexity - O(1)
+     * Space Complexity - O(n)
+     */
     Stack<Integer> stack = new Stack<>();
     Stack<Integer> minStack = new Stack<>();
 
