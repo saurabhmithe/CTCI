@@ -11,11 +11,15 @@ public class LoopDetection {
     so as to make a loop in the linked list.
 
     EXAMPLE
-    Input: A -) B -) C -) 0 -) E -) C [thesameCasearlier)
+    Input: A -) B -) C -) 0 -) E -) C (the same C as earlier)
     Output: C
 
     */
 
+    /**
+     * Time Complexity - O(n)
+     * Space Complexity - O(1)
+     */
     public int loopDetection(LinkedList.Node head) {
         if (head == null || head.next == null) return -1;
         LinkedList.Node fast = head.next;
