@@ -4,6 +4,16 @@ import java.util.Stack;
 
 public class QueueViaStacks {
 
+    /*
+
+    Implement a MyQueue class which implements a queue using two stacks.
+
+    */
+
+    /**
+     * Time Complexity - O(1)
+     * Space Complexity - O(1)
+     */
     Stack<Integer> s1 = new Stack<>();
     Stack<Integer> s2 = new Stack<>();
 
@@ -30,5 +40,5 @@ public class QueueViaStacks {
         queueViaStacks.enqueue(30);
         queueViaStacks.dequeue();
     }
-    
+
 }
