@@ -19,6 +19,10 @@ public class StackOfPlates {
 
     */
 
+    /**
+     * Time Complexity - O(1)
+     * Space Complexity - O(1)
+     */
     List<Stack> stacks;
     int stackNo;
     int stackSize = 3;
@@ -65,7 +69,6 @@ public class StackOfPlates {
         stackOfPlates.push(70);
         stackOfPlates.pop();
         stackOfPlates.pop();
-
-
     }
+
 }
