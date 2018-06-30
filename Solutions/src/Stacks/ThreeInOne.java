@@ -8,6 +8,10 @@ public class ThreeInOne {
 
     */
 
+    /**
+     * Time Complexity - O(1)
+     * Space Complexity - O(n)
+     */
     int[] tops = {-1, -1, -1};
     int[] values = new int[10];
     int[] indices = new int[10];
@@ -24,6 +28,7 @@ public class ThreeInOne {
     }
 
     public int pop(int stackNo) {
+        if (tops[stackNo] == -1) return -1;
         int top = tops[stackNo];
         tops[stackNo] = indices[top];
         int num = values[top];
