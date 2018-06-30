@@ -2,6 +2,16 @@ package LinkedLists;
 
 public class Palindrome {
 
+    /*
+
+    Implement a function to check if a linked list is a palindrome.
+
+    */
+
+    /**
+     * Time Complexity - O(n)
+     * Space Complexity - O(1)
+     */
     public boolean palindrome(LinkedList.Node head) {
         LinkedList.Node fast = head;
         LinkedList.Node slow = head;
