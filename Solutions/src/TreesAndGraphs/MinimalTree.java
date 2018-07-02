@@ -2,6 +2,13 @@ package TreesAndGraphs;
 
 public class MinimalTree {
 
+    /*
+
+    Given a sorted (increasing order) array with unique integer elements,
+    write an algorithm to create a binary search tree with minimal height.
+
+    */
+
     public TreeNode constructTree(int[] a, int low, int high) {
         if (low > high) return null;
         int mid = (high + low) / 2;

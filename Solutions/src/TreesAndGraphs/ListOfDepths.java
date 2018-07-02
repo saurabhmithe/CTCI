@@ -6,6 +6,13 @@ import java.util.List;
 
 public class ListOfDepths {
 
+    /*
+
+    Given a binary tree, design an algorithm which creates a linked list of all the nodes at
+    each depth (e.g., if you have a tree with depth D, you'll have Dlinked lists).
+
+    */
+
     public void calculate(TreeNode root, List<LinkedList<TreeNode>> lists, int level) {
         if (root == null) return;
         LinkedList<TreeNode> list;
