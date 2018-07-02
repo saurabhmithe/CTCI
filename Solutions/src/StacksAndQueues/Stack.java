@@ -1,4 +1,4 @@
-package Stacks;
+package StacksAndQueues;
 
 public class Stack {
 

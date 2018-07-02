@@ -1,4 +1,4 @@
-package Stacks;
+package StacksAndQueues;
 
 import java.util.LinkedList;
 
@@ -16,6 +16,10 @@ public class AnimalShelter {
 
     */
 
+    /**
+     * Time Complexity - O(1)
+     * Space Complexity - O(n)
+     */
     LinkedList<Long> cat = new LinkedList<>();
     LinkedList<Long> dog = new LinkedList<>();
 
