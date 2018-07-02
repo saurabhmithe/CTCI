@@ -5,7 +5,7 @@ import java.util.List;
 
 public class BreadthFirstSearch {
 
-    public void bfs(Graph graph) {
+    private void bfs(Graph graph) {
         if (graph.size() == 0) return;
 
         List<Node> allNodes = graph.getAllNodes();

@@ -30,7 +30,7 @@ public class Graph {
 
 class Node {
 
-    int value;
+    public int value;
     LinkedList<Node> adjacentNodes;
     public State state;
 
