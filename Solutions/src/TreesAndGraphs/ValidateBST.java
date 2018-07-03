@@ -8,6 +8,15 @@ public class ValidateBST {
         return minMax(root.left, min, root.value) && minMax(root.right, root.value, max);
     }
 
+    int index = 0;
+
+    public void inorderSorting(TreeNode root, int[] array) {
+        if (root == null) return;
+        inorderSorting(root.left, array);
+        array[index++] = root.value;
+        inorderSorting(root.right, array);
+    }
+
     public static void main(String[] args) {
         MinimalTree minimalTree = new MinimalTree();
         TreeNode root = minimalTree.constructTree(new int[]{
@@ -16,5 +25,14 @@ public class ValidateBST {
         ValidateBST validateBST = new ValidateBST();
         boolean isValid = validateBST.minMax(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
         System.out.println(isValid);
+
+        int[] a = new int[13];
+        boolean res = true;
+        validateBST.inorderSorting(root, a);
+        for (int i = 0; i < a.length - 1; i++) {
+            if (a[i] >= a[i + 1]) res = false;
+        }
+        System.out.println(res);
     }
+
 }
