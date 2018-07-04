@@ -2,6 +2,12 @@ package TreesAndGraphs;
 
 public class ValidateBST {
 
+    /*
+
+    Implement a function to check ifa binary tree is a binary search tree.
+
+    */
+
     public boolean minMax(TreeNode root, int min, int max) {
         if (root == null) return true;
         if (root.value <= min || root.value > max) return false;
